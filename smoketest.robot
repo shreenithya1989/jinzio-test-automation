@@ -42,7 +42,7 @@ Open MyProfile Test Case
     Click Element    id=link-gmail-button
     Wait Until Element Is Visible    id=view_container
 
-invitations
+Send invitations
     Open Browser    http://localhost:3000    chrome
     Wait Until Element Contains    id=loginButton    \    5s
     Maximize Browser Window
@@ -53,11 +53,41 @@ invitations
     Wait Until Location Is    http://localhost:3000/app/jobs/open
     Click Link    id=profile
     Wait Until Location Is    http://localhost:3000/app/profile
+    Wait Until Element Is Visible    id=rec-invitations
     Click Element    id=rec-invitations
     Click Element    id=recruiter-invitation-button
-    Input Text    id=rec-invitationlist-firstname    Nithya
-    Input Text    id=rec-invitationlist-lastname    Chidambaram
-    Input Text    id=rec-invitationlist-email    shreenithya1989@gmail.com
+    Input Text    id=rec-invitationlist-firstname    Jinzio
+    Input Text    id=rec-invitationlist-lastname    Rec1
+    Input Text    id=rec-invitationlist-email    jinzio.rec1@mailinator.com
     Wait Until Element Is Enabled    id=rec-sendinvitation-button
     Click Element    id=rec-sendinvitation-button
+    Close Browser
+
+JoinInvitation
+    Open Browser    http://localhost:3000    chrome
+    Wait Until Element Contains    id=loginButton    \    5
+    Maximize Browser Window
+    Click Button    id=loginButton
+    Input Text    id=username    jinzio.rec1@mailinator.com
+    Input Password    id=password    Test@123
+    Click Button    name=action
+    Click Button    //*[@name="action" and @value="accept"]
+    Close Browser
+
+Join invitation Profile check
+    Open Browser    http://localhost:3000    chrome
+    Wait Until Element Contains    id=loginButton    \    5s
+    Maximize Browser Window
+    Click Button    id=loginButton
+    Input Text    id=username    jinzio.rec1@mailinator.com
+    Input Password    id=password    Test@123
+    Click Button    name=action
+    Wait Until Location Is    http://localhost:3000/app/task/status/open
+    Click Link    id=profile
+    Wait Until Location Is    http://localhost:3000/app/profile
+    Wait Until Element Is Visible    id=link-gmail-button
+    Mouse Over    id=link-gmail-button
+    Wait Until Element Is Visible    id=rec-profile    5s
+    Click Element    id=rec-profile
+    Wait Until Page Contains    Jinzio
     Close Browser
